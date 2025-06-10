@@ -5,20 +5,6 @@
 	import { Spring } from 'svelte/motion';
 
 	const gltfLand = useLoader(GLTFLoader).load('/src/lib/assets/models/World/HomeBoundLand.glb');
-	const gltfLandB = useLoader(GLTFLoader).load('/src/lib/assets/models/World/HomeBoundLandBot.glb');
-	const gltfStreet = useLoader(GLTFLoader).load('/src/lib/assets/models/World/HomeBoundStreet.glb');
-	const gltfParking = useLoader(GLTFLoader).load(
-		'/src/lib/assets/models/World/HomeBoundParking.glb'
-	);
-	const gltfTrail = useLoader(GLTFLoader).load('/src/lib/assets/models/World/HomeBoundTrail.glb');
-	const gltfExtras = useLoader(GLTFLoader).load('/src/lib/assets/models/World/HomeBoundExtras.glb');
-	const gltfBuildings = useLoader(GLTFLoader).load(
-		'/src/lib/assets/models/World/HomeBoundBuildings.glb'
-	);
-	const gltfNeighborhood = useLoader(GLTFLoader).load(
-		'/src/lib/assets/models/World/HomeBoundNeighborhood.glb'
-	);
-
 	interactivity();
 
 	const scale = new Spring(1);
