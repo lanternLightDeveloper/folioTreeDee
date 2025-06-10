@@ -360,7 +360,7 @@
 		</T.Mesh>
 		<T.Mesh position={[-32, 9, 11.8]} scale={[4.8, 2.75]} rotation={[0, -0.723, 0]}>
 			<T.PlaneGeometry />
-			<ImageMaterial transparent side={DoubleSide} url="/src/lib/assets/img/uckzAlt.png" />
+			<ImageMaterial transparent side={DoubleSide} url="uckzAlt.png" />
 		</T.Mesh>
 	{/if}
 
@@ -373,7 +373,7 @@
 		</T.Mesh>
 		<T.Mesh position={[-32, 9, 11.8]} scale={[4.8, 2.75]} rotation={[0, -0.723, 0]}>
 			<T.PlaneGeometry />
-			<ImageMaterial transparent side={DoubleSide} url="/src/lib/assets/img/butterfittiAlt.png" />
+			<ImageMaterial transparent side={DoubleSide} url="butterfittiAlt.png" />
 		</T.Mesh>
 	{/if}
 
