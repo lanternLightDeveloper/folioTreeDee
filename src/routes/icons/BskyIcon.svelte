@@ -4,7 +4,7 @@
 	import { interactivity } from '@threlte/extras';
 	import { Spring } from 'svelte/motion';
 
-	const gltf = useLoader(GLTFLoader).load('./bluSkyIcon.glb');
+	const gltf = useLoader(GLTFLoader).load('bluSkyIcon.glb');
 
 	interactivity();
 
