@@ -118,6 +118,24 @@
 	useTask((delta) => {
 		rotation += delta / 6 / 20;
 	});
+
+	let htmlMenuPos = $state([-27, 42.5]);
+
+	function updatePosition() {
+		const screenWidth = window.innerWidth;
+		const screenHeight = window.innerHeight;
+
+		// Example: Adjust position based on screen width
+		if (screenWidth < 768) {
+			htmlMenuPos = [-27, 42.5]; // Move menu for smaller screens
+		} else {
+			htmlMenuPos = [-65, 40]; // Default position
+		}
+	}
+
+	// Run on load and window resize
+	window.addEventListener('resize', updatePosition);
+	updatePosition();
 </script>
 
 <!-- Base camera -->
@@ -144,7 +162,8 @@
 
 // 🦕 🦖🦖🦖 🦕 🦕 💀= 💣 🌠
 <!-- Menu -->
-<HTML autoRender={false} position={[-65, 40]}
+
+<HTML autoRender={false} position={htmlMenuPos}
 	><aside class="menu">
 		<button
 			onclick={() => {
