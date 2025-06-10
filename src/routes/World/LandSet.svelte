@@ -12,7 +12,7 @@
 	const gltfExtras = useLoader(GLTFLoader).load('World/HomeBoundExtras.glb');
 	const gltfBuildings = useLoader(GLTFLoader).load('World/HomeBoundBuildings.glb');
 	const gltfNeighborhood = useLoader(GLTFLoader).load('World/HomeBoundNeighborhood.glb');
-	);
+	
 
 	interactivity();
 
