@@ -10,25 +10,16 @@
 		useCursor
 	} from '@threlte/extras';
 	import { Spring } from 'svelte/motion';
+	import { text } from '@sveltejs/kit';
 	import { DoubleSide } from 'three';
 
-	interactivity();
-
-	//  🦕  🦖🦖🦖 🦕 🦕          💀= 💣 🌠
-
 	import World from './World/World.svelte';
-
 	import EmailIcon from './icons/EmailIcon.svelte';
 	import IgIcon from './icons/IgIcon.svelte';
 	import BskyIcon from './icons/BskyIcon.svelte';
 	const cursor = useCursor('pointer');
 
-	import { text } from '@sveltejs/kit';
-	let showBlast = $state(false);
-
 	let html = $state();
-	let position = $state([0, 0, 0]);
-	let lookAtTarget = $state([0, 0, 0]);
 	let cameraRef = $state();
 	let currentSet = $state('A');
 	let nextSet = $state(null);
@@ -36,16 +27,54 @@
 	let currentContact = $state(0);
 	let showProjectDropdown = $state(false);
 	let showContactDropdown = $state(false);
+	const scale = new Spring([2, 2, 2]);
+
+	interactivity();
 
 	type Props = {
 		autoRender?: boolean;
 	};
+
 	let { autoRender = true }: Props = $props();
 
-	const scale = new Spring([2, 2, 2]);
+	//  🦕  🦖🦖🦖 🦕 🦕 Media Queries 💀= 💣 🌠
 
-	//  Move the camera to a new position and look at a new target
-	//  🦕  🦖🦖🦖 🦕 🦕          💀= 💣 🌠
+	let position = $state([-47, 15, 65]);
+	let lookAtTarget = $state([-25, 9, 12]);
+	let htmlMenuPos = $state([-27, 42.5]);
+	let htmlHomeContext = $state([-80, 0]);
+	let htmlServiceContext = $state([-40, 0]);
+	let htmlProjectContext = $state([-40, 0]);
+	let htmlAboutContext = $state([-40, 0]);
+
+	function updatePosition() {
+		const screenWidth = window.innerWidth;
+		const screenHeight = window.innerHeight;
+
+		// Example: Adjust position based on screen width
+		if (screenWidth < 768) {
+			position = [-47, 15, 65];
+			lookAtTarget = [-20, 9, 12];
+			htmlMenuPos = [-28, 42.5]; // Move menu for smaller screens
+			htmlHomeContext = [-36, 0]; // Adjust context position for smaller screens
+			htmlServiceContext = [-46, 40];
+			htmlProjectContext = [-50, 5];
+			htmlAboutContext = [-66, 3];
+		} else {
+			position = [-45, 15, 60];
+			htmlMenuPos = [-65, 40]; // Default position
+			htmlHomeContext = [-60, 0]; // Default context position
+			htmlServiceContext = [-40, 0];
+			htmlProjectContext = [-40, 0];
+			htmlAboutContext = [-40, 0];
+		}
+	}
+
+	// Run on load and window resize
+	window.addEventListener('resize', updatePosition);
+	updatePosition();
+
+	//  🦕  🦖🦖🦖 🦕 🦕Move the camera and look at a new target   💀= 💣 🌠
 	const animatePosition = (startPos, endPos, startLookAt, endLookAt, duration, callback) => {
 		let startTime;
 
@@ -90,7 +119,7 @@
 		animatePosition(startPos, endPos, startLookAt, endLookAt, duration, callback);
 	};
 
-	//  🦕  🦖🦖🦖 🦕 🦕          💀= 💣 🌠
+	//  🦕  🦖🦖🦖 🦕 🦕  Load sets 💀= 💣 🌠
 	const loadNextSet = (set) => {
 		nextSet = set;
 
@@ -100,51 +129,20 @@
 		}, 0); // Adjust the delay as needed
 	};
 
-	//  🦕  🦖🦖🦖 🦕 🦕          💀= 💣 🌠
-
-	// 3d text
-
-	// On clicks
-	//  🦕  🦖🦖🦖 🦕 🦕          💀= 💣 🌠
-	// const TrxClick = () => {
-	// 	showBlackSquare = false;
-
-	// 	setTimeout(() => {
-	// 		showBlackSquare = true;
-	// 	}, 2400);
-	// };
-
+	//  🦕  🦖🦖🦖 🦕 🦕  Extras 💀= 💣 🌠
 	let rotation = $state(0);
 	useTask((delta) => {
 		rotation += delta / 6 / 20;
 	});
-
-	let htmlMenuPos = $state([-27, 42.5]);
-
-	function updatePosition() {
-		const screenWidth = window.innerWidth;
-		const screenHeight = window.innerHeight;
-
-		// Example: Adjust position based on screen width
-		if (screenWidth < 768) {
-			htmlMenuPos = [-27, 42.5]; // Move menu for smaller screens
-		} else {
-			htmlMenuPos = [-65, 40]; // Default position
-		}
-	}
-
-	// Run on load and window resize
-	window.addEventListener('resize', updatePosition);
-	updatePosition();
 </script>
 
 <!-- Base camera -->
 <T.PerspectiveCamera
 	makeDefault
-	position={[-45, 15, 60]}
+	{position}
 	oncreate={(ref) => {
 		cameraRef = ref;
-		ref.lookAt(-20, 9, 12);
+		ref.lookAt(...lookAtTarget);
 	}}
 ></T.PerspectiveCamera>
 
@@ -161,13 +159,17 @@
 {/if}
 
 // 🦕 🦖🦖🦖 🦕 🦕 💀= 💣 🌠
-<!-- Menu -->
-
+<!-- Menu
+[-45, 15, 60], [-25, 9, 12]
+[-40, 15, 20], [-30, 10, 10]
+[-22, 18, 20], [-21, 12, 0]
+[-5, 8.5, 12], [0, 8, 20]
+[-5, 9, 13], [-15, 8, 10] -->
 <HTML autoRender={false} position={htmlMenuPos}
 	><aside class="menu">
 		<button
 			onclick={() => {
-				handleClick([-45, 15, 60], [0, 0, 0], () => loadNextSet('A'));
+				handleClick([-47, 15, 65], [-20, 9, 12], () => loadNextSet('A'));
 				currentButton = 1;
 				currentContact = 0;
 				showContactDropdown = false;
@@ -224,7 +226,7 @@
 
 		<button
 			onclick={() => {
-				handleClick([-22, 18, 20], [-21, 12, 0], () => loadNextSet('A'));
+				handleClick([-23.5, 18, 20], [-21, 12, 0], () => loadNextSet('A'));
 				currentButton = 2;
 				currentContact = 0;
 				showContactDropdown = false;
@@ -236,7 +238,7 @@
 
 		<button
 			onclick={() => {
-				handleClick([-5, 8.5, 12], [0, 8, 20], () => loadNextSet('A'));
+				handleClick([-4.5, 8.5, 12], [0, 8, 20], () => loadNextSet('A'));
 				currentButton = 4;
 				currentContact = 0;
 				showContactDropdown = false;
@@ -248,7 +250,7 @@
 
 		<button
 			onclick={() => {
-				handleClick([-5, 9, 13], [-15, 8, 10], () => loadNextSet('A'));
+				handleClick([-4, 10, 13], [-15, 8, 8], () => loadNextSet('A'));
 
 				currentButton = 5;
 				currentContact = 0;
@@ -261,13 +263,13 @@
 
 		<!-- Projects Dropdown Menu -->
 		<div class="dropdown" class:show={showProjectDropdown}>
-			<button onclick={() => handleClick([-5, 9, 13], [-15, 8, 10], () => loadNextSet('A'))}>
+			<button onclick={() => handleClick([-4, 10, 13], [-15, 8, 8], () => loadNextSet('A'))}>
 				Artisan Countertops
 			</button>
-			<button onclick={() => handleClick([-18, 9.5, 11], [-16, 9.5, 0], () => loadNextSet('A'))}>
+			<button onclick={() => handleClick([-18, 9.5, 11], [-15, 9.5, 0], () => loadNextSet('A'))}>
 				What's for Dinner
 			</button>
-			<button onclick={() => handleClick([-3, 11, 7], [-2, 9.5, 0], () => loadNextSet('A'))}>
+			<button onclick={() => handleClick([-3, 11, 10], [-3, 9.5, 0], () => loadNextSet('A'))}>
 				WSRD
 			</button>
 			<br />
@@ -284,26 +286,20 @@
 
 // 🦕 🦖🦖🦖 🦕 🦕 💀= 💣 🌠
 <!-- Selection Text  -->
-<HTML autoRender={false} class="menu" position={[-80, 0]}>
+<HTML autoRender={true} class="menu" position={htmlHomeContext}>
 	<article>
 		{#if currentButton === 1}
 			<p class="backky">
 				Hello friend. Thank you for visiting my site. I hope you enjoy your stay.
 			</p>
 		{/if}
-
-		{#if currentButton === 3}{/if}
-
-		{#if currentButton === 5}
-			<p class="backky">Projects: these are so cool</p>
-		{/if}
 	</article>
 </HTML>
 
-<HTML autoRender={false} class="menu" position={[-100, 5]}>
+<HTML autoRender={false} class="menu" position={htmlAboutContext}>
 	<article>
 		{#if currentButton === 4}
-			<p class="lrgContext backky">
+			<p class="about-box backky">
 				A few years ago, while working in retail, I started learning website development during
 				downtime at the shop. I took on the challenge of building a new site for the store, and
 				something just clicked. What began as a side project quickly became a genuine passion, and I
@@ -434,7 +430,7 @@
 
 // 🦕 🦖🦖🦖 🦕 🦕 💀= 💣 🌠
 <!-- Services -->
-<HTML autoRender={false} position={[-40, 42]} class="services">
+<HTML autoRender={false} position={htmlServiceContext} class="services">
 	{#if currentButton === 2}
 		<section>
 			<div class="price-box backky">
@@ -446,42 +442,34 @@
 				</p>
 				<button
 					onclick={() => {
-						handleClick([-19, 9.5, 14], [-23, 9.5, 0], () => loadNextSet('A'));
+						handleClick([-19, 9.5, 14], [-25, 9.5, 0], () => loadNextSet('A'));
 						currentButton = 6;
 					}}
 				>
 					Learn about the steps involved in the process.
 				</button>
+
+				<h3>Simple</h3>
+				<p>
+					Perfect for those who know exactly what they need. You provide the vision, including the
+					color scheme, features, and design preferences, and I bring it to life with a static or
+					lightly functional website.
+				</p>
+
+				<h3>Moderate</h3>
+				<p>
+					Ideal if you have a general idea but need some guidance to shape your vision. Together,
+					we’ll refine your ideas into a cohesive, functional website. This is going to be more than
+					just a static page.
+				</p>
+
+				<h3>"I’ll Handle It"</h3>
+				<p>
+					For when you have a jumble of brilliant ideas but need someone to make them happen. We’ll
+					collaborate to turn your concepts into a polished, professional site. This can be complex
+					and include E-commerce or CMS services.
+				</p>
 			</div>
-
-			<article>
-				<div class="price-box backky">
-					<h3>Simple</h3>
-					<p>
-						Perfect for those who know exactly what they need. You provide the vision, including the
-						color scheme, features, and design preferences, and I bring it to life with a static or
-						lightly functional website.
-					</p>
-				</div>
-
-				<div class="price-box backky">
-					<h3>Moderate</h3>
-					<p>
-						Ideal if you have a general idea but need some guidance to shape your vision. Together,
-						we’ll refine your ideas into a cohesive, functional website. This is going to be more
-						than just a static page.
-					</p>
-				</div>
-
-				<div class="price-box backky">
-					<h3>"I’ll Handle It"</h3>
-					<p>
-						For when you have a jumble of brilliant ideas but need someone to make them happen.
-						We’ll collaborate to turn your concepts into a polished, professional site. This can be
-						complex and include E-commerce or CMS services.
-					</p>
-				</div>
-			</article>
 		</section>
 	{/if}
 
@@ -494,7 +482,7 @@
 			</p>
 			<button
 				onclick={() => {
-					handleClick([-19, 9.5, 14], [-23, 9.5, 0], () => loadNextSet('A'));
+					handleClick([-19, 9.5, 14], [-25, 9.5, 0], () => loadNextSet('A'));
 					currentButton = 7;
 				}}
 			>
@@ -511,7 +499,7 @@
 			</p>
 			<button
 				onclick={() => {
-					handleClick([-19, 10.5, 14], [-23, 10.5, 0], () => loadNextSet('A'));
+					handleClick([-19, 10.5, 14], [-25, 10.5, 0], () => loadNextSet('A'));
 					currentButton = 8;
 				}}
 			>
@@ -528,7 +516,7 @@
 			</p>
 			<button
 				onclick={() => {
-					handleClick([-19, 11.5, 14], [-23, 11.5, 0], () => loadNextSet('A'));
+					handleClick([-19, 11.5, 14], [-25, 11.5, 0], () => loadNextSet('A'));
 					currentButton = 9;
 				}}
 			>
@@ -546,7 +534,7 @@
 
 			<button
 				onclick={() => {
-					handleClick([-19, 13, 14], [-23, 13, 0], () => loadNextSet('A'));
+					handleClick([-19, 13, 14], [-25, 13, 0], () => loadNextSet('A'));
 					currentButton = 10;
 				}}
 			>
@@ -564,7 +552,7 @@
 
 			<button
 				onclick={() => {
-					handleClick([-19, 14.5, 14], [-23, 14.5, 0], () => loadNextSet('A'));
+					handleClick([-19, 14.5, 14], [-25, 14.5, 0], () => loadNextSet('A'));
 					currentButton = 11;
 				}}
 			>
@@ -581,7 +569,7 @@
 			</p>
 			<button
 				onclick={() => {
-					handleClick([-19, 15.5, 14], [-23, 15.5, 0], () => loadNextSet('A'));
+					handleClick([-19, 15.5, 14], [-25, 15.5, 0], () => loadNextSet('A'));
 					currentButton = 12;
 				}}
 			>
@@ -598,7 +586,7 @@
 			</p>
 			<button
 				onclick={() => {
-					handleClick([-19, 18, 14], [-23, 16, 0], () => loadNextSet('A'));
+					handleClick([-19, 18.5, 14], [-26, 16, 0], () => loadNextSet('A'));
 					currentButton = 13;
 				}}
 			>
@@ -615,6 +603,16 @@
 			</p>
 		</article>
 	{/if}
+</HTML>
+
+<!-- 🦕  🦖🦖🦖 🦕 🦕 Projects💀= 💣 🌠 -->
+
+<HTML autoRender={false} class="menu" position={htmlProjectContext}>
+	<article>
+		{#if currentButton === 5}
+			<p class="backky">Projects: these are so cool</p>
+		{/if}
+	</article>
 </HTML>
 
 <!-- 🦕  🦖🦖🦖 🦕 🦕          💀= 💣 🌠 -->
@@ -688,9 +686,21 @@
 	}
 
 	.price-box {
-		padding: 0 0.75rem;
+		height: 80vh;
+		max-height: 80vh;
+		padding: 0 0.25rem;
 		margin: 0.5rem -5vw;
 		width: 40vw;
+		overflow-y: auto;
+	}
+
+	.about-box {
+		height: 20vh;
+		max-height: 20vh;
+		padding: 0 0.5rem;
+		margin: 0.5rem -5vw;
+		width: 80vw;
+		overflow-y: auto;
 	}
 
 	.steps {
