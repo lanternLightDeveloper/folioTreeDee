@@ -54,10 +54,10 @@
 
 		// Example: Adjust position based on screen width
 		if (screenWidth < 768) {
-			position = [-43, 15, 65];
+			position = [-43, 13, 65];
 			lookAtTarget = [-20, 9, 12];
 			htmlMenuPos = [-31, 42.5]; // Move menu for smaller screens
-			htmlHomeContext = [-30, -10]; // Adjust context position for smaller screens
+			htmlHomeContext = [-30, -5]; // Adjust context position for smaller screens
 			htmlServiceContext = [-46, 40];
 			htmlProjectContext = [-45, 0];
 			htmlAboutContext = [-60, 3];
