@@ -7,7 +7,8 @@
 		Suspense,
 		ImageMaterial,
 		Text3DGeometry,
-		useCursor
+		useCursor,
+		Billboard
 	} from '@threlte/extras';
 	import { Spring } from 'svelte/motion';
 	import { text } from '@sveltejs/kit';
@@ -33,10 +34,10 @@
 
 	type Props = {
 		autoRender?: boolean;
+		follow?: boolean;
 	};
 
-	let { autoRender = true }: Props = $props();
-
+	let { autoRender = true, follow = true }: Props = $props();
 	//  🦕  🦖🦖🦖 🦕 🦕 Media Queries 💀= 💣 🌠
 
 	let position = $state([-47, 15, 65]);
@@ -55,12 +56,12 @@
 		if (screenWidth < 768) {
 			position = [-47, 15, 65];
 			lookAtTarget = [-20, 9, 12];
-			htmlMenuPos = [-28, 42.5]; // Move menu for smaller screens
-			htmlHomeContext = [-36, 0]; // Adjust context position for smaller screens
+			htmlMenuPos = [-34, 42.5]; // Move menu for smaller screens
+			htmlHomeContext = [-30, 0]; // Adjust context position for smaller screens
 			htmlServiceContext = [-46, 40];
-			htmlProjectContext = [-50, 5];
-			htmlAboutContext = [-66, 3];
-		} else {
+			htmlProjectContext = [-45, 0];
+			htmlAboutContext = [-60, 3];
+		} else if (screenWidth < 1024) {
 			position = [-45, 15, 60];
 			htmlMenuPos = [-65, 40]; // Default position
 			htmlHomeContext = [-60, 0]; // Default context position
@@ -73,6 +74,12 @@
 	// Run on load and window resize
 	window.addEventListener('resize', updatePosition);
 	updatePosition();
+
+	function onResize() {
+		console.log('You resized the browser window!');
+	}
+
+	window.addEventListener('resize', onResize);
 
 	//  🦕  🦖🦖🦖 🦕 🦕Move the camera and look at a new target   💀= 💣 🌠
 	const animatePosition = (startPos, endPos, startLookAt, endLookAt, duration, callback) => {
@@ -157,6 +164,12 @@
 		{/if}
 	</Suspense>
 {/if}
+<Billboard {follow} position={[0, 15, 0]}>
+	<T.Mesh>
+		<T.BoxGeometry />
+		<T.MeshStandardMaterial color="white" />
+	</T.Mesh>
+</Billboard>
 
 // 🦕 🦖🦖🦖 🦕 🦕 💀= 💣 🌠
 <!-- Menu
@@ -181,7 +194,7 @@
 
 		<button
 			onclick={() => {
-				handleClick([-40, 15, 20], [-30, 10, 10], () => loadNextSet('A'));
+				handleClick([-40.5, 15, 21], [-30.5, 11, 10], () => loadNextSet('A'));
 				currentButton = 3;
 				currentContact = 0;
 				showContactDropdown = true;
@@ -226,7 +239,7 @@
 
 		<button
 			onclick={() => {
-				handleClick([-23.5, 18, 20], [-21, 12, 0], () => loadNextSet('A'));
+				handleClick([-23.5, 18, 20], [-22.5, 12, 0], () => loadNextSet('A'));
 				currentButton = 2;
 				currentContact = 0;
 				showContactDropdown = false;
@@ -250,7 +263,7 @@
 
 		<button
 			onclick={() => {
-				handleClick([-4, 10, 13], [-15, 8, 8], () => loadNextSet('A'));
+				handleClick([-2, 10, 14], [-15, 8, 8], () => loadNextSet('A'));
 
 				currentButton = 5;
 				currentContact = 0;
@@ -266,10 +279,10 @@
 			<button onclick={() => handleClick([-4, 10, 13], [-15, 8, 8], () => loadNextSet('A'))}>
 				Artisan Countertops
 			</button>
-			<button onclick={() => handleClick([-18, 9.5, 11], [-15, 9.5, 0], () => loadNextSet('A'))}>
+			<button onclick={() => handleClick([-19, 9.5, 11], [-13.5, 9.5, 0], () => loadNextSet('A'))}>
 				What's for Dinner
 			</button>
-			<button onclick={() => handleClick([-3, 11, 10], [-3, 9.5, 0], () => loadNextSet('A'))}>
+			<button onclick={() => handleClick([-3, 11, 13], [-3.5, 9.5, 0], () => loadNextSet('A'))}>
 				WSRD
 			</button>
 			<br />
