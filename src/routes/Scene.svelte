@@ -454,7 +454,7 @@
 				</p>
 				<button
 					onclick={() => {
-						handleClick([-19, 9.5, 14], [-25, 9.5, 0], () => loadNextSet('A'));
+						handleClick([-20, 9.5, 14], [-27, 9.5, 0], () => loadNextSet('A'));
 						currentButton = 6;
 					}}
 				>
@@ -494,7 +494,7 @@
 			</p>
 			<button
 				onclick={() => {
-					handleClick([-19, 9.5, 14], [-25, 9.5, 0], () => loadNextSet('A'));
+					handleClick([-20, 9.5, 14], [-27, 9.5, 0], () => loadNextSet('A'));
 					currentButton = 7;
 				}}
 			>
@@ -598,7 +598,7 @@
 			</p>
 			<button
 				onclick={() => {
-					handleClick([-19, 18.5, 14], [-26, 16, 0], () => loadNextSet('A'));
+					handleClick([-20, 18.5, 14], [-28.5, 16, 0], () => loadNextSet('A'));
 					currentButton = 13;
 				}}
 			>
@@ -632,6 +632,19 @@
 <style>
 	button {
 		all: unset;
+	}
+
+	::-webkit-scrollbar {
+		width: 0.65rem;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #ffcc00;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #000;
+		border-radius: 8px;
 	}
 
 	.backky {
