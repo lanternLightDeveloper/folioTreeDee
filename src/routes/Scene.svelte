@@ -58,9 +58,9 @@
 			lookAtTarget = [-20, 9, 12];
 			htmlMenuPos = [-31, 42.5]; // Move menu for smaller screens
 			htmlHomeContext = [-30, -5]; // Adjust context position for smaller screens
-			htmlServiceContext = [-46, 40];
+			htmlServiceContext = [-42, 40];
 			htmlProjectContext = [-45, 0];
-			htmlAboutContext = [-60, 3];
+			htmlAboutContext = [-55, 0];
 		} else if (screenWidth < 1024) {
 			position = [-45, 15, 60];
 			htmlMenuPos = [-65, 40]; // Default position
@@ -182,7 +182,7 @@
 	><aside class="menu">
 		<button
 			onclick={() => {
-				handleClick([-47, 15, 65], [-20, 9, 12], () => loadNextSet('A'));
+				handleClick([-43, 13, 65], [-20, 9, 12], () => loadNextSet('A'));
 				currentButton = 1;
 				currentContact = 0;
 				showContactDropdown = false;
@@ -239,7 +239,7 @@
 
 		<button
 			onclick={() => {
-				handleClick([-23.5, 18, 20], [-22.5, 12, 0], () => loadNextSet('A'));
+				handleClick([-23.5, 18, 23], [-22, 12, 0], () => loadNextSet('A'));
 				currentButton = 2;
 				currentContact = 0;
 				showContactDropdown = false;
