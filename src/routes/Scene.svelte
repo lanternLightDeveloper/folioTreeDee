@@ -56,7 +56,7 @@
 		if (screenWidth < 768) {
 			position = [-43, 13, 65];
 			lookAtTarget = [-20, 9, 12];
-			htmlMenuPos = [-30.5, 42]; // Move menu for smaller screens
+			htmlMenuPos = [-28.5, 43.5]; // Move menu for smaller screens
 			htmlHomeContext = [-30, -5]; // Adjust context position for smaller screens
 			htmlServiceContext = [-42, 40];
 			htmlProjectContext = [-45, 0];
@@ -294,9 +294,8 @@
 				Close
 			</button>
 		</div>
-	</aside></HTML
->
-
+	</aside>
+</HTML>
 // 🦕 🦖🦖🦖 🦕 🦕 💀= 💣 🌠
 <!-- Selection Text  -->
 <HTML autoRender={true} class="menu" position={htmlHomeContext}>
@@ -648,19 +647,17 @@
 		right: 0;
 		display: flex;
 		justify-content: center;
-		width: 70vw;
 	}
 
 	.menu {
-		width: fit-content;
+		width: 100vw;
 		padding: 0.25rem;
-		border-radius: 8px;
 		border: 2px solid lch(0.86% 4.14 318.14);
 		background: lch(0.86% 4.14 318.14);
 
 		& button {
 			border-radius: 8px;
-			margin: 0 0.25rem;
+			margin: 0 0.5rem;
 		}
 	}
 
