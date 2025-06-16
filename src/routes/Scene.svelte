@@ -650,14 +650,13 @@
 	}
 
 	.menu {
-		width: 100vw;
-		padding: 0.25rem;
+		width: 110vw;
 		border: 2px solid lch(0.86% 4.14 318.14);
 		background: lch(0.86% 4.14 318.14);
 
 		& button {
 			border-radius: 8px;
-			margin: 0 0.5rem;
+			margin: 0 0.25rem;
 		}
 	}
 
