@@ -56,7 +56,7 @@
 		if (screenWidth < 768) {
 			position = [-43, 13, 65];
 			lookAtTarget = [-20, 9, 12];
-			htmlMenuPos = [-31, 42.5]; // Move menu for smaller screens
+			htmlMenuPos = [-30.5, 42]; // Move menu for smaller screens
 			htmlHomeContext = [-30, -5]; // Adjust context position for smaller screens
 			htmlServiceContext = [-42, 40];
 			htmlProjectContext = [-45, 0];
@@ -319,10 +319,10 @@
 				found myself diving deeper into design, development, and everything in between.
 				<br />
 				<br />
-				Since then, I’ve kept learning and building—sometimes just for fun, sometimes for friends or
-				small businesses—and I’ve realized I really enjoy helping others create a strong online presence.
-				Now, I’m looking to work with individuals and businesses who need a website that not only looks
-				good but actually works for them. If that sounds like something you’re after, I’d love to chat.
+				Since then, I’ve kept learning and building stuff, sometimes just for fun or sometimes for small
+				businesses. I’ve realized I really enjoy helping others create a strong online presence. Now,
+				I’m looking to work with individuals and businesses who need a website that not only looks good
+				but actually works for them. If that sounds like something you’re after, I’d love to chat.
 			</p>
 		{/if}
 	</article>
