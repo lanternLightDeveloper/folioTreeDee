@@ -7,8 +7,7 @@
 		Suspense,
 		ImageMaterial,
 		Text3DGeometry,
-		useCursor,
-		Billboard
+		useCursor
 	} from '@threlte/extras';
 	import { Spring } from 'svelte/motion';
 	import { text } from '@sveltejs/kit';
@@ -61,13 +60,13 @@
 			htmlServiceContext = [-42, 40];
 			htmlProjectContext = [-45, 0];
 			htmlAboutContext = [-55, 0];
-		} else if (screenWidth < 1024) {
+		} else if (screenWidth > 728) {
 			position = [-45, 15, 60];
-			htmlMenuPos = [-65, 40]; // Default position
+			htmlMenuPos = [-30, 42]; // Default position
 			htmlHomeContext = [-60, 0]; // Default context position
-			htmlServiceContext = [-40, 0];
+			htmlServiceContext = [-35, 40];
 			htmlProjectContext = [-40, 0];
-			htmlAboutContext = [-40, 0];
+			htmlAboutContext = [-87, 2];
 		}
 	}
 
@@ -164,20 +163,9 @@
 		{/if}
 	</Suspense>
 {/if}
-<Billboard {follow} position={[0, 15, 0]}>
-	<T.Mesh>
-		<T.BoxGeometry />
-		<T.MeshStandardMaterial color="white" />
-	</T.Mesh>
-</Billboard>
 
 // 🦕 🦖🦖🦖 🦕 🦕 💀= 💣 🌠
-<!-- Menu
-[-45, 15, 60], [-25, 9, 12]
-[-40, 15, 20], [-30, 10, 10]
-[-22, 18, 20], [-21, 12, 0]
-[-5, 8.5, 12], [0, 8, 20]
-[-5, 9, 13], [-15, 8, 10] -->
+<!-- Menu -->
 <HTML autoRender={false} position={htmlMenuPos}
 	><aside class="menu">
 		<button
@@ -301,9 +289,7 @@
 <HTML autoRender={true} class="menu" position={htmlHomeContext}>
 	<article>
 		{#if currentButton === 1}
-			<p class="backky">
-				Hello friend. Thank you for visiting my site. I hope you enjoy your stay.
-			</p>
+			<p class="backky">Thank you for visiting, I hope you enjoy your stay.</p>
 		{/if}
 	</article>
 </HTML>
@@ -670,6 +656,11 @@
 		& button {
 			border-radius: 8px;
 			margin: 0 0.25rem;
+		}
+
+		@media screen and (min-width: 728px) {
+			width: fit-content;
+			border-radius: 8px;
 		}
 	}
 

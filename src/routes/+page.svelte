@@ -8,7 +8,7 @@
 </script>
 
 <main>
-	<Canvas>
+	<Canvas class="canvas">
 		<!-- <Studio>
 			<Scene />
 		</Studio> -->
@@ -27,6 +27,7 @@
 	}
 
 	main {
+		position: relative;
 		background-color: rgb(58, 147, 231);
 		color: white;
 		/* border: 2px solid #ffd700; */
@@ -34,4 +35,16 @@
 		height: 100vh;
 		margin: -8px;
 	}
+	@media (min-width: 768px) {
+		main {
+			background-color: lch(64.4% 33.33 240.21);
+		}
+	}
+	/* 
+	@media (prefers-color-scheme: dark) {
+		main {
+			background-color: rgb(0, 0, 0);
+			color: white;
+		}
+	} */
 </style>
