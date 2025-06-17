@@ -1,6 +1,6 @@
 {
-	"name": "tree-d-alt-again",
-	"version": "0.0.1",
+	"name": "lantern-light-development",
+	"version": "4.0.1",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
