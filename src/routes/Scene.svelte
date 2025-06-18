@@ -289,7 +289,7 @@
 <HTML autoRender={true} class="menu" position={htmlHomeContext}>
 	<article>
 		{#if currentButton === 1}
-			<p class="backky">Thank you for visiting, I hope you enjoy your stay.</p>
+			<p class="backer">Thank you for visiting, I hope you enjoy your stay.</p>
 		{/if}
 	</article>
 </HTML>
@@ -297,7 +297,7 @@
 <HTML autoRender={false} class="menu" position={htmlAboutContext}>
 	<article>
 		{#if currentButton === 4}
-			<p class="about-box backky">
+			<p class="about-box backer">
 				A few years ago, while working in retail, I started learning website development during
 				downtime at the shop. I took on the challenge of building a new site for the store, and
 				something just clicked. What began as a side project quickly became a genuine passion, and I
@@ -431,7 +431,7 @@
 <HTML autoRender={false} position={htmlServiceContext} class="services">
 	{#if currentButton === 2}
 		<section>
-			<div class="price-box backky">
+			<div class="price-box backer">
 				<h2>Pricing Tiers</h2>
 				<p>
 					Every project is unique, and pricing varies based on scope and complexity. My goal is to
@@ -472,7 +472,7 @@
 	{/if}
 
 	{#if currentButton === 6}
-		<article class="steps backky">
+		<article class="steps backer">
 			<h2>How It Works</h2>
 			<p>
 				I follow a structured process to ensure your project is completed efficiently and to the
@@ -489,7 +489,7 @@
 		</article>
 	{/if}
 	{#if currentButton === 7}
-		<article class="steps backky">
+		<article class="steps backer">
 			<h2>Step 1</h2>
 			<p>
 				<strong>Planning:</strong> We’ll discuss your goals, brainstorm ideas, and create a clear plan
@@ -506,7 +506,7 @@
 		</article>
 	{/if}
 	{#if currentButton === 8}
-		<article class="steps backky">
+		<article class="steps backer">
 			<h2>Step 2</h2>
 			<p>
 				<strong>Design:</strong> I’ll craft a layout, color palette, and design that reflect your brand
@@ -523,7 +523,7 @@
 		</article>
 	{/if}
 	{#if currentButton === 9}
-		<article class="steps backky">
+		<article class="steps backer">
 			<h2>Step 3</h2>
 			<p>
 				<strong>Development:</strong> Your website will be built from the ground up, tailored to your
@@ -541,7 +541,7 @@
 		</article>
 	{/if}
 	{#if currentButton === 10}
-		<article class="steps backky">
+		<article class="steps backer">
 			<h2>Step 4</h2>
 			<p>
 				<strong>Testing:</strong> Every detail will be tested across different devices and browsers to
@@ -560,7 +560,7 @@
 	{/if}
 
 	{#if currentButton === 11}
-		<article class="steps backky">
+		<article class="steps backer">
 			<h2>Step 5</h2>
 			<p>
 				<strong>Deployment:</strong> Your website goes live and is ready to make an impact!
@@ -576,7 +576,7 @@
 		</article>
 	{/if}
 	{#if currentButton === 12}
-		<article class="steps backky">
+		<article class="steps backer">
 			<h2>Step 6</h2>
 			<p>
 				<strong>Support:</strong> Enjoy free support for the first year to address any unforeseen issues
@@ -593,7 +593,7 @@
 		</article>
 	{/if}
 	{#if currentButton === 13}
-		<article class="steps backky">
+		<article class="steps backer">
 			<h2>Step 7</h2>
 			<p>
 				<strong>Management:</strong> Take it further with advanced features like analytics, tracking,
@@ -608,7 +608,7 @@
 <HTML autoRender={false} class="menu" position={htmlProjectContext}>
 	<article>
 		{#if currentButton === 5}
-			<p class="backky">Projects: these are so cool</p>
+			<p class="backer">Projects: these are so cool</p>
 		{/if}
 	</article>
 </HTML>
@@ -633,10 +633,10 @@
 		border-radius: 8px;
 	}
 
-	.backky {
-		background-color: lch(0.86% 4.14 318.14);
+	.backer {
+		background-color: lch(98.59% 2.31 317.26);
 		border-radius: 8px;
-		border: 2px solid #ffd700;
+		border: 2px solid lch(0.86% 4.14 318.14);
 		padding: 0.5rem;
 	}
 
@@ -650,12 +650,12 @@
 
 	.menu {
 		width: 110vw;
-		border: 2px solid lch(0.86% 4.14 318.14);
-		background: lch(0.86% 4.14 318.14);
+		background: transparent;
 
 		& button {
 			border-radius: 8px;
-			margin: 0 0.25rem;
+			margin: 0.25rem 0.25rem;
+			border: 2px solid lch(0.86% 4.14 318.14);
 		}
 
 		@media screen and (min-width: 728px) {
@@ -666,12 +666,12 @@
 
 	.dropdown {
 		position: absolute;
-		background: #ffd700;
+		background: lch(98.59% 2.31 317.26 / 0.683);
 		border: 4px solid lch(0.86% 4.14 318.14);
 		border-radius: 8px;
 		padding: 10px;
 		display: none;
-		margin-top: 2rem;
+		margin-top: 3rem;
 	}
 
 	.dropdown.show {
@@ -734,6 +734,28 @@
 
 		&:hover {
 			background-color: #ffcc00;
+		}
+	}
+
+	/* 🦕  🦖🦖🦖 🦕 🦕Dark mode          💀= 💣 🌠 */
+	@media (prefers-color-scheme: dark) {
+		::-webkit-scrollbar-track {
+			background: lch(98.59% 2.31 317.26);
+		}
+
+		.dropdown {
+			position: absolute;
+			background: lch(0.86% 4.14 318.14 / 0.455);
+		}
+
+		.backer {
+			background-color: lch(0.86% 4.14 318.14);
+			border: 2px solid #ffd700;
+		}
+
+		.backer {
+			background-color: rgb(0, 0, 0);
+			color: lch(98.59% 2.31 317.26);
 		}
 	}
 </style>
