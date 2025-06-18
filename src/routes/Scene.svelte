@@ -201,20 +201,24 @@
 			>
 				Email
 			</button>
-			<button
-				onclick={() => {
-					currentContact = 1;
-				}}
-			>
-				Instagram
-			</button>
-			<button
-				onclick={() => {
-					currentContact = 2;
-				}}
-			>
-				Bluesky
-			</button>
+			<a href="https://www.instagram.com/lanternlightdevelopment/">
+				<button
+					onclick={() => {
+						currentContact = 1;
+					}}
+				>
+					Instagram
+				</button>
+			</a>
+			<a href="https://bsky.app/profile/soturbulent.bsky.social">
+				<button
+					onclick={() => {
+						currentContact = 2;
+					}}
+				>
+					Bluesky
+				</button>
+			</a>
 			<br />
 			<button
 				onclick={() => {
