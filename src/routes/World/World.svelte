@@ -1,22 +1,28 @@
 <script>
-	import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-	import { T, useLoader, useTask } from '@threlte/core';
-	import { interactivity, ContactShadows } from '@threlte/extras';
-	import { Spring } from 'svelte/motion';
-
-	import Land from './LandSet.svelte';
+	import { T } from '@threlte/core';
+	import { interactivity, useSuspense, useGltf } from '@threlte/extras';
 
 	interactivity();
+	const suspend = useSuspense();
 
-	const scale = new Spring(1);
+	const models = suspend(
+		Promise.all([
+			useGltf('World/HomeBoundLand.glb'),
+			useGltf('World/HomeBoundLandBot.glb'),
+			useGltf('World/HomeBoundStreet.glb'),
+			useGltf('World/HomeBoundParking.glb'),
+			useGltf('World/HomeBoundTrail.glb'),
+			useGltf('World/HomeBoundExtras.glb'),
+			useGltf('World/HomeBoundBuildings.glb'),
+			useGltf('World/HomeBoundNeighborhood.glb')
+		])
+	);
 
-	let rotation = 0;
-	useTask((delta) => {
-		rotation += delta / 4;
-	});
+	let scale = $state(1);
 </script>
 
-<T.DirectionalLight castShadow intensity={1} position={[10, 10, 20]} />
-<T.AmbientLight intensity={0.5} />
-
-<Land />
+{#await models then results}
+	{#each results as { scene }}
+		<T is={scene} position={[10, 0, 0]} {scale} />
+	{/each}
+{/await}
