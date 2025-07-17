@@ -24,19 +24,9 @@
 	let { autoRender = true, cameraRef }: Props = $props();
 
 	let html = $state();
-	let currentButton = $state(1);
-	let currentContact = $state(0);
-	let currentSet = $state('A');
-	let nextSet = $state(null);
-	let showProjectDropdown = $state(false);
-	let showContactDropdown = $state(false);
 	let position = $state([-47, 15, 65]);
 	let lookAtTarget = $state([-25, 9, 12]);
 	let htmlMenuPos = $state([-27, 42.5]);
-	let htmlHomeContext = $state([-80, 0]);
-	let htmlServiceContext = $state([-40, 0]);
-	let htmlProjectContext = $state([-40, 0]);
-	let htmlAboutContext = $state([-40, 0]);
 	let cameraLocked = $state(false);
 
 	const scale = new Spring([2, 2, 2]);
@@ -60,36 +50,13 @@
 			position = [-43, 13, 65];
 			lookAtTarget = [-20, 9, 12];
 			htmlMenuPos = [-28.5, 43.5];
-			htmlHomeContext = [-30, -5];
-			htmlServiceContext = [-42, 40];
-			htmlProjectContext = [-45, 0];
-			htmlAboutContext = [-55, 0];
 		} else if (screenWidth > 728) {
 			position = [-45, 15, 60];
-			htmlMenuPos = [0, 42];
-			htmlHomeContext = [-70, 15];
-			htmlServiceContext = [-35, 40];
-			htmlProjectContext = [-40, 0];
-			htmlAboutContext = [-87, 2];
+			htmlMenuPos = [-8, 40];
 		}
 	}
 
 	window.addEventListener('resize', updatePosition);
-
-	//  🦕  🦖🦖🦖 🦕 🦕     Handle camera movement trigger 💀= 💣 🌠
-	const handleClick = async (newPosition, newLookAtTarget, callback) => {
-		const startPos = [...position];
-		const endPos = newPosition;
-		const startLookAt = [...lookAtTarget];
-		const endLookAt = newLookAtTarget;
-		const duration = 2000;
-
-		position = newPosition;
-		lookAtTarget = newLookAtTarget;
-		cameraLocked = true;
-
-		animatePosition(startPos, endPos, startLookAt, endLookAt, duration, callback);
-	};
 
 	const animatePosition = (startPos, endPos, startLookAt, endLookAt, duration, callback) => {
 		let startTime;
@@ -133,142 +100,8 @@
 		requestAnimationFrame(animate);
 	};
 
-	//  🦕  🦖🦖🦖 🦕 🦕   Load next content set 💀= 💣 🌠
-	const loadNextSet = (set) => {
-		nextSet = set;
-
-		setTimeout(() => {
-			currentSet = set;
-			nextSet = null;
-		}, 0);
-	};
-
 	//  🦕  🦖🦖🦖 🦕 🦕  Extras/ Debug 💀= 💣 🌠
 </script>
-
-// 🦕 🦖🦖🦖 🦕 🦕 Menu 💀= 💣 🌠
-<HTML autoRender={false} position={htmlMenuPos}
-	><aside class="menu fade-in">
-		<button
-			onclick={() => {
-				handleClick([-43, 13, 65], [-20, 9, 12], () => loadNextSet('A'));
-				currentButton = 1;
-				currentContact = 0;
-				showContactDropdown = false;
-				showProjectDropdown = false;
-			}}
-		>
-			Home
-		</button>
-
-		<button
-			onclick={() => {
-				handleClick([-40.5, 15, 21], [-30.5, 11, 10], () => loadNextSet('A'));
-				currentButton = 3;
-				currentContact = 0;
-				showContactDropdown = true;
-				showProjectDropdown = false;
-			}}
-		>
-			Contact
-		</button>
-
-		<!-- Contact Dropdown Menu -->
-		<div class="dropdown" class:show={showContactDropdown}>
-			<button
-				onclick={() => {
-					currentContact = 3;
-				}}
-			>
-				Email
-			</button>
-			<a href="https://www.instagram.com/lanternlightdevelopment/">
-				<button
-					onclick={() => {
-						currentContact = 1;
-					}}
-				>
-					Instagram
-				</button>
-			</a>
-			<a href="https://bsky.app/profile/soturbulent.bsky.social">
-				<button
-					onclick={() => {
-						currentContact = 2;
-					}}
-				>
-					Bluesky
-				</button>
-			</a>
-			<br />
-			<button
-				onclick={() => {
-					showContactDropdown = false;
-				}}
-			>
-				Close
-			</button>
-		</div>
-
-		<button
-			onclick={() => {
-				handleClick([-23.5, 18, 23], [-22, 12, 0], () => loadNextSet('A'));
-				currentButton = 2;
-				currentContact = 0;
-				showContactDropdown = false;
-				showProjectDropdown = false;
-			}}
-		>
-			Services
-		</button>
-
-		<button
-			onclick={() => {
-				handleClick([-4.5, 8.5, 12], [0, 8, 20], () => loadNextSet('A'));
-				currentButton = 4;
-				currentContact = 0;
-				showContactDropdown = false;
-				showProjectDropdown = false;
-			}}
-		>
-			About
-		</button>
-
-		<button
-			onclick={() => {
-				handleClick([-2, 10, 14], [-15, 8, 8], () => loadNextSet('A'));
-
-				currentButton = 5;
-				currentContact = 0;
-				showProjectDropdown = true;
-				showContactDropdown = false;
-			}}
-		>
-			Projects
-		</button>
-
-		<!-- Projects Dropdown Menu -->
-		<div class="dropdown" class:show={showProjectDropdown}>
-			<button onclick={() => handleClick([-4, 10, 13], [-15, 8, 8], () => loadNextSet('A'))}>
-				Artisan Countertops
-			</button>
-			<button onclick={() => handleClick([-19, 9.5, 11], [-13.5, 9.5, 0], () => loadNextSet('A'))}>
-				What's for Dinner
-			</button>
-			<button onclick={() => handleClick([-3, 11, 13], [-3.5, 9.5, 0], () => loadNextSet('A'))}>
-				WSRD
-			</button>
-			<br />
-			<button
-				onclick={() => {
-					showProjectDropdown = false;
-				}}
-			>
-				Close
-			</button>
-		</div>
-	</aside>
-</HTML>
 
 // 🦕 🦖🦖🦖 🦕 🦕 Selection Text 💀= 💣 🌠
 <HTML autoRender={true} class="menu" position={htmlHomeContext}>
@@ -598,126 +431,3 @@
 		{/if}
 	</article>
 </HTML>
-
-<!-- 🦕  🦖🦖🦖 🦕 🦕 Styles 💀= 💣 🌠 -->
-<!--svelte-ignore css_unused_selector -->
-<style>
-	.fade-in {
-		opacity: 0;
-		animation: fadeIn 1s ease-in forwards;
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-
-	.menu {
-		display: flex;
-		width: 110vw;
-		background: transparent;
-
-		& button {
-			border-radius: var(--rad-Sm);
-			margin: var(--space-Sm);
-			padding: var(--space-Sm);
-			border: var(--bord);
-			background: var(--accent-1);
-			font-weight: bold;
-			font-size: var(--size-4);
-
-			&:hover {
-				background-color: var(--hover);
-			}
-		}
-
-		@media screen and (min-width: 728px) {
-			width: fit-content;
-			border-radius: 8px;
-		}
-	}
-
-	.dropdown {
-		position: absolute;
-		background: var(--hallow);
-		border: var(--bord);
-		border-radius: var(--rad-Sm);
-		padding: var(--space-Sm);
-		display: none;
-		margin-top: var(--size-8);
-	}
-
-	.dropdown.show {
-		display: block;
-	}
-
-	.backer {
-		background-color: var(--bg-1);
-		color: var(--txt-1);
-		border-radius: var(--rad-Sm);
-		border: var(--bord);
-		padding: var(--space-Sm);
-
-		& p {
-			padding: 0;
-		}
-	}
-
-	aside {
-		position: fixed; /* or absolute */
-		top: 0;
-		right: 0;
-		display: flex;
-		justify-content: center;
-	}
-
-	article {
-		width: fit-content;
-		margin: var(--space-Side);
-		border-radius: var(--rad-Sm);
-		z-index: 999;
-
-		& p {
-			padding: 0;
-		}
-	}
-
-	section {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--size-5);
-		width: 75vw;
-		height: 100vh;
-		border-radius: var(--rad-Sm);
-		padding: var(--size-5);
-		z-index: 999;
-	}
-
-	.price-box {
-		height: 80vh;
-		max-height: 80vh;
-		padding: 0 var(--size-1);
-		margin: 0.5rem -5vw;
-		width: 40vw;
-		overflow-y: auto;
-	}
-
-	.about-box {
-		height: 20vh;
-		max-height: 20vh;
-		padding: 0 var(--size-4);
-		margin: 0.5rem -5vw;
-		width: 80vw;
-		overflow-y: auto;
-	}
-
-	.steps {
-		padding: 0 var(--size-4);
-		margin: 20vh -5vw;
-		width: 40vw;
-	}
-</style>

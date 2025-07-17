@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { T } from '@threlte/core';
 	import { interactivity, useSuspense, useGltf } from '@threlte/extras';
 

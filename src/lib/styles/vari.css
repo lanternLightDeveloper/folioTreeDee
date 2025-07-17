@@ -2,8 +2,8 @@
 /* spacing */
 --size-1: clamp(0.2rem, 0.5vw, 0.25rem);
 --size-2: clamp(0.4rem, 0.5vw, 0.6rem);
---size-3: clamp(0.6rem, 1vw, 0.75rem);
---size-4: clamp(0.5rem, 2vw, 1rem);
+--size-3: clamp(0.5rem, 1vw, 0.75rem);
+--size-4: clamp(0.6rem, 2vw, 1rem);
 --size-5: clamp(1rem, 2.5vw, 1.25rem);
 --size-6: clamp(1.2rem, 3vw, 1.5rem);
 --size-7: clamp(1.5rem, 5vw, 2.5rem);
@@ -14,7 +14,7 @@
 /* page spacing */
 --space-Top:5vh 0;
 --space-Side:0 8vw;
---space-Sm:1vh 5vw;
+--space-Sm:1vh 1vw;
 --space-Med:5vh 10vw;
 --space-Lg:7vh 15vw;
 

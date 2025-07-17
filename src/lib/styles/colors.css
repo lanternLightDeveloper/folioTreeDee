@@ -3,16 +3,16 @@
     Description: Defines color variables for text, backgrounds, and accents.
 */
 :root{
-    --bg-1: oklch(7% 0.02 305);  /*Deep black */
-    --bg-2: oklch(27% 0.01 95); /* Charcoal gray */
+    --bg-1: oklch(7.472% 0.02188 279.717);  /*Deep black */
+    --bg-2: oklch(26.923% 0.0106 176.536); /* Charcoal gray */
     
     --txt-1: oklch(99% 0.003 95); /* white */
     --txt-2: oklch(99% 0.003 95); /* white */
 
-    --accent-1: oklch(65% 0.18 95); /* Gold */
-    --accent-2:  oklch(40% 0.2 305); /* Purple*/
+    --accent-1: oklch(72.086% 0.1459 89.443); /* Gold */
+    --accent-2: oklch(42.859% 0.28243 265.741); /* Purple*/
 
-    --error:oklch(70% 0.4 333); /* Pink bright  */
+    --error:oklch(62.793% 0.25768 29.223); /* Pink bright  */
 
     --gradient: linear-gradient(to bottom,var(--bg-1), var(--bg-1),  color-mix(in srgb, var(--bg-1) 90%, var(--accent-1) 10%),var(--accent-1));
     --gradientFlip:linear-gradient(0deg,var(--bg-1), var(--bg-1),  color-mix(in srgb, var(--bg-1) 90%, var(--accent-1) 10%),var(--accent-1));
@@ -20,7 +20,7 @@
     /* Adjusted states for Dark Theme */
     --hover: color-mix(in oklch, var(--accent-1) 80%, white 20%);
     --color-active: color-mix(in oklch, var(--bg-1) 80%, white 25%);
-    --border-color: color-mix(in oklch, var(--accent-2) 90%, var(--bg-1) 20%);
+    --border-color: color-mix(in oklch, var(--accent-2) 90%, var(--bg-1) 80%);
     --shadow:color-mix(in oklch, var(--bg-1) 70%, var(--bg-1) 10%);
     --hallow:color-mix(in oklch, var(--accent-2) 100%, transparent 100%);
 }
