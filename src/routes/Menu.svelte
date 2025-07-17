@@ -67,10 +67,10 @@
 		} else if (screenWidth > 728) {
 			position = [-45, 15, 60];
 			htmlMenuPos = [0, 42];
-			htmlHomeContext = [-70, 15];
-			htmlServiceContext = [-35, 40];
-			htmlProjectContext = [-40, 0];
-			htmlAboutContext = [-87, 2];
+			htmlHomeContext = [-55, 0];
+			htmlServiceContext = [-10, 30];
+			htmlProjectContext = [-30, -10];
+			htmlAboutContext = [-60, -3];
 		}
 	}
 
@@ -151,7 +151,7 @@
 	><aside class="menu fade-in">
 		<button
 			onclick={() => {
-				handleClick([-43, 13, 65], [-20, 9, 12], () => loadNextSet('A'));
+				handleClick([-45, 15, 60], [-20, 9, 12], () => loadNextSet('A'));
 				currentButton = 1;
 				currentContact = 0;
 				showContactDropdown = false;
@@ -270,17 +270,6 @@
 	</aside>
 </HTML>
 
-// 🦕 🦖🦖🦖 🦕 🦕 Selection Text 💀= 💣 🌠
-<HTML autoRender={true} class="menu" position={htmlHomeContext}>
-	<article class="fade-in">
-		{#if currentButton === 1}
-			<p class="backer">
-				Thank you for visiting, while this site is under construction, I hope you enjoy your visit.
-			</p>
-		{/if}
-	</article>
-</HTML>
-
 // 🦕 🦖🦖🦖 🦕 🦕 Contact / Social Icons 💀= 💣 🌠
 {#if currentContact === 0}
 	<T.Mesh position={[-33, 11, 11]} scale={[0.005, 0.005, 0.005]} rotation={[-0.2, -0.65, -0.11]}>
@@ -395,10 +384,10 @@
 {/if}
 
 // 🦕 🦖🦖🦖 🦕 🦕Services 💀= 💣 🌠
-<HTML autoRender={false} position={htmlServiceContext} class="services">
+<HTML autoRender={false} position={htmlServiceContext}>
 	{#if currentButton === 2}
 		<section>
-			<div class="price-box backer">
+			<div class="price-box glass-Box">
 				<h2>Pricing Tiers</h2>
 				<p>
 					Every project is unique, and pricing varies based on scope and complexity. My goal is to
@@ -406,6 +395,7 @@
 					a free year of support to ensure your website stays up and running.
 				</p>
 				<button
+					class="button-gradient"
 					onclick={() => {
 						handleClick([-20, 9.5, 14], [-27, 9.5, 0], () => loadNextSet('A'));
 						currentButton = 6;
@@ -439,13 +429,14 @@
 	{/if}
 
 	{#if currentButton === 6}
-		<article class="steps backer">
+		<article class=" glass-Box">
 			<h2>How It Works</h2>
 			<p>
 				I follow a structured process to ensure your project is completed efficiently and to the
 				highest standard. Here's what to expect:
 			</p>
 			<button
+				class="button-gradient"
 				onclick={() => {
 					handleClick([-20, 9.5, 14], [-27, 9.5, 0], () => loadNextSet('A'));
 					currentButton = 7;
@@ -456,13 +447,14 @@
 		</article>
 	{/if}
 	{#if currentButton === 7}
-		<article class="steps backer">
+		<article class=" glass-Box">
 			<h2>Step 1</h2>
 			<p>
 				<strong>Planning:</strong> We’ll discuss your goals, brainstorm ideas, and create a clear plan
 				for your website.
 			</p>
 			<button
+				class="button-gradient"
 				onclick={() => {
 					handleClick([-19, 10.5, 14], [-25, 10.5, 0], () => loadNextSet('A'));
 					currentButton = 8;
@@ -473,13 +465,14 @@
 		</article>
 	{/if}
 	{#if currentButton === 8}
-		<article class="steps backer">
+		<article class=" glass-Box">
 			<h2>Step 2</h2>
 			<p>
 				<strong>Design:</strong> I’ll craft a layout, color palette, and design that reflect your brand
 				and message.
 			</p>
 			<button
+				class="button-gradient"
 				onclick={() => {
 					handleClick([-19, 11.5, 14], [-25, 11.5, 0], () => loadNextSet('A'));
 					currentButton = 9;
@@ -490,7 +483,7 @@
 		</article>
 	{/if}
 	{#if currentButton === 9}
-		<article class="steps backer">
+		<article class=" glass-Box">
 			<h2>Step 3</h2>
 			<p>
 				<strong>Development:</strong> Your website will be built from the ground up, tailored to your
@@ -498,6 +491,7 @@
 			</p>
 
 			<button
+				class="button-gradient"
 				onclick={() => {
 					handleClick([-19, 13, 14], [-25, 13, 0], () => loadNextSet('A'));
 					currentButton = 10;
@@ -508,7 +502,7 @@
 		</article>
 	{/if}
 	{#if currentButton === 10}
-		<article class="steps backer">
+		<article class=" glass-Box">
 			<h2>Step 4</h2>
 			<p>
 				<strong>Testing:</strong> Every detail will be tested across different devices and browsers to
@@ -516,6 +510,7 @@
 			</p>
 
 			<button
+				class="button-gradient"
 				onclick={() => {
 					handleClick([-19, 14.5, 14], [-25, 14.5, 0], () => loadNextSet('A'));
 					currentButton = 11;
@@ -527,12 +522,13 @@
 	{/if}
 
 	{#if currentButton === 11}
-		<article class="steps backer">
+		<article class=" glass-Box">
 			<h2>Step 5</h2>
 			<p>
 				<strong>Deployment:</strong> Your website goes live and is ready to make an impact!
 			</p>
 			<button
+				class="button-gradient"
 				onclick={() => {
 					handleClick([-19, 15.5, 14], [-25, 15.5, 0], () => loadNextSet('A'));
 					currentButton = 12;
@@ -543,13 +539,14 @@
 		</article>
 	{/if}
 	{#if currentButton === 12}
-		<article class="steps backer">
+		<article class=" glass-Box">
 			<h2>Step 6</h2>
 			<p>
 				<strong>Support:</strong> Enjoy free support for the first year to address any unforeseen issues
 				or updates.
 			</p>
 			<button
+				class="button-gradient"
 				onclick={() => {
 					handleClick([-20, 18.5, 14], [-28.5, 16, 0], () => loadNextSet('A'));
 					currentButton = 13;
@@ -560,7 +557,7 @@
 		</article>
 	{/if}
 	{#if currentButton === 13}
-		<article class="steps backer">
+		<article class=" glass-Box">
 			<h2>Step 7</h2>
 			<p>
 				<strong>Management:</strong> Take it further with advanced features like analytics, tracking,
@@ -571,10 +568,10 @@
 </HTML>
 
 // 🦕 🦖🦖🦖 🦕 🦕 About💀= 💣 🌠
-<HTML autoRender={false} class="menu" position={htmlAboutContext}>
+<HTML autoRender={false} position={htmlAboutContext}>
 	<article>
 		{#if currentButton === 4}
-			<p class="about-box backer">
+			<p class="about-box glass-Box">
 				A few years ago, while working in retail, I started learning website development during
 				downtime at the shop. I took on the challenge of building a new site for the store, and
 				something just clicked. What began as a side project quickly became a genuine passion, and I
@@ -591,10 +588,21 @@
 </HTML>
 
 <!-- 🦕  🦖🦖🦖 🦕 🦕 Projects💀= 💣 🌠 -->
-<HTML autoRender={false} class="menu" position={htmlProjectContext}>
+<HTML autoRender={false} position={htmlProjectContext}>
 	<article>
 		{#if currentButton === 5}
-			<p class="backer">Projects: these are so cool</p>
+			<p class="glass-Box">Projects: these are so cool</p>
+		{/if}
+	</article>
+</HTML>
+
+// 🦕 🦖🦖🦖 🦕 🦕 Selection Text 💀= 💣 🌠
+<HTML autoRender={false} position={htmlHomeContext}>
+	<article class="fade-in glass-Box">
+		{#if currentButton === 1}
+			<p>
+				Thank you for visiting, while this site is under construction, I hope you enjoy your visit.
+			</p>
 		{/if}
 	</article>
 </HTML>
@@ -655,15 +663,13 @@
 		display: block;
 	}
 
-	.backer {
-		background-color: var(--bg-1);
-		color: var(--txt-1);
-		border-radius: var(--rad-Sm);
-		border: var(--bord);
-		padding: var(--space-Sm);
+	article {
+		width: 30vw;
 
-		& p {
-			padding: 0;
+		& h2,
+		p {
+			margin: 0;
+			padding: var(--size-2);
 		}
 	}
 
@@ -673,17 +679,6 @@
 		right: 0;
 		display: flex;
 		justify-content: center;
-	}
-
-	article {
-		width: fit-content;
-		margin: var(--space-Side);
-		border-radius: var(--rad-Sm);
-		z-index: 999;
-
-		& p {
-			padding: 0;
-		}
 	}
 
 	section {
@@ -698,12 +693,19 @@
 	}
 
 	.price-box {
-		height: 80vh;
+		height: fit-content;
 		max-height: 80vh;
-		padding: 0 var(--size-1);
-		margin: 0.5rem -5vw;
-		width: 40vw;
+		padding: var(--size-4);
+		margin: 0;
+		width: 30vw;
 		overflow-y: auto;
+
+		& p,
+		h2,
+		h3 {
+			margin: 0;
+			padding: 0;
+		}
 	}
 
 	.about-box {
@@ -713,11 +715,5 @@
 		margin: 0.5rem -5vw;
 		width: 80vw;
 		overflow-y: auto;
-	}
-
-	.steps {
-		padding: 0 var(--size-4);
-		margin: 20vh -5vw;
-		width: 40vw;
 	}
 </style>

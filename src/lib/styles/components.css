@@ -23,13 +23,14 @@
 
  /* Boxes  */
 .glass-Box {
-    background: var(--hallow);
+    background: var(--bg-1);
     backdrop-filter: blur(10px);
     --webkit-backdrop-filter: blur(1.5px);
+	border-radius: var(--rad-Sm);
 }
 
 .glass-Box-2 {
-    background: var(--bg-2);
+    background: var(--hallow);
 	backdrop-filter: blur(5px);
     --webkit-backdrop-filter: blur(1px);
 }

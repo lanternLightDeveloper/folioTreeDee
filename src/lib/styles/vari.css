@@ -29,7 +29,7 @@
 /* --space-Full: cqh(15%) cqw(15%); */
 
 /* Edges */
---rad-Sm: 1rem;
+--rad-Sm: .7rem;
 --rad-Lg: 2.25rem;
 
 --bord: 1px solid var(--border-color);
