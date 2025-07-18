@@ -349,30 +349,30 @@
 
 	<!-- Email  -->
 	{#if currentContact === 3}
-		<T.Mesh position={[-28, 7.25, 8]} scale={[1, 1, 1]} rotation={[0, -0.65, 0]}>
+		<T.Mesh position={[-28.5, 7, 7.5]} scale={[1, 1, 1]} rotation={[0, -0.69, 0]}>
 			<HTML position.y={0} transform {autoRender}>
-				<form class="contact">
-					<p>Reach out</p>
-					<br />
-					<label for="full_name">Name</label><br />
+				<form class="classicForm">
+					<h2>Reach out</h2>
+
+					<label for="full_name">Name</label>
 					<input
 						type="text"
 						id="full_name"
 						name="full_name"
 						placeholder="Enter your name"
 						required
-					/><br />
+					/>
 
-					<label for="contact_point">Email</label><br />
+					<label for="contact_point">Email</label>
 					<input
 						type="text"
 						id="contact_point"
 						name="contact_point"
 						placeholder="Enter your email"
 						required
-					/><br />
+					/>
 
-					<label for="message">Message</label><br />
+					<label for="message">Message</label>
 					<textarea id="message" name="message" placeholder="Enter your message" required
 					></textarea>
 
