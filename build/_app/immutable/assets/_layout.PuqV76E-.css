@@ -1,0 +1,1 @@
+footer.svelte-dlvse{background-color:var(--bg-2);display:flex;justify-content:space-between;align-items:center;position:fixed;bottom:0;width:100vw;height:5vh;padding:var(--space-Sm);& a:where(.svelte-dlvse){color:var(--txt-1)}@media screen and (min-width: 1024px){height:10vh}}
