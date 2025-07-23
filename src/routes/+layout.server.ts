@@ -1,9 +1,9 @@
 import { createServerClient } from '@supabase/ssr';
-
+import { env } from '$env/dynamic/public';
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({ fetch, cookies }) => {
-	const supabase = createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
+	const supabase = createServerClient(env.PUBLIC_SUPABASE_URL, env.PUBLIC_SUPABASE_ANON_KEY, {
 		global: { fetch },
 		cookies: {
 			getAll: () => cookies.getAll(),
