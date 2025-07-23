@@ -4,6 +4,7 @@
 	import { Studio } from '@threlte/studio';
 	import ResumeScene from './ResumeScene.svelte';
 	import Scene from './Scene.svelte';
+	import { enhance } from '$app/forms';
 
 	type Props = {
 		autorender?: boolean;
