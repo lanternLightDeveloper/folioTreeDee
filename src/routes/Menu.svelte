@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+
 	import { T, useLoader, useTask } from '@threlte/core';
 	import {
 		interactivity,
@@ -11,6 +13,8 @@
 	} from '@threlte/extras';
 	import { Spring } from 'svelte/motion';
 	import { DoubleSide } from 'three';
+
+	import { enhance } from '$app/forms';
 
 	import EmailIcon from './Icons/EmailIcon.svelte';
 	import IgIcon from './Icons/IgIcon.svelte';
@@ -47,6 +51,22 @@
 
 	//  🦕  🦖🦖🦖 🦕 🦕   Run layout logic 💀= 💣 🌠
 	updatePosition();
+
+	// Function to navigate to a specified URL without scrolling
+	function navigateTo(url: string) {
+		// Validate URL to prevent open redirects
+		if (url.startsWith('/') || url.startsWith('http')) {
+			goto(url, { noScroll: true });
+		} else {
+			console.error('Invalid URL:', url);
+		}
+	}
+
+	let formSubmitted = $state(false);
+
+	const handleSubmit = () => {
+		formSubmitted = true;
+	};
 
 	function updatePosition() {
 		if (cameraLocked) {
@@ -267,6 +287,15 @@
 				Close
 			</button>
 		</div>
+		<!-- 
+		<button>
+			<a
+				onclick={() => {
+					navigateTo('/auth');
+				}}
+				href="/auth">Login</a
+			>
+		</button> -->
 	</aside>
 </HTML>
 
@@ -351,33 +380,51 @@
 	{#if currentContact === 3}
 		<T.Mesh position={[-28.5, 7, 7.5]} scale={[1, 1, 1]} rotation={[0, -0.69, 0]}>
 			<HTML position.y={0} transform {autoRender}>
-				<form class="classicForm">
-					<h2>Reach out</h2>
+				{#if !formSubmitted}
+					<form
+						class="classicForm"
+						method="post"
+						action="?/submit"
+						use:enhance={({ formElement, formData, action, cancel }) => {
+							return async ({ result, update }) => {
+								if (result.type === 'success') {
+									handleSubmit();
+									await update();
+								}
+							};
+						}}
+						enctype="multipart/form-data"
+					>
+						<p>Reach out</p>
+						<label for="full_name">Name</label>
+						<input
+							type="text"
+							id="full_name"
+							name="full_name"
+							placeholder="Enter your name"
+							required
+						/>
 
-					<label for="full_name">Name</label>
-					<input
-						type="text"
-						id="full_name"
-						name="full_name"
-						placeholder="Enter your name"
-						required
-					/>
+						<label for="contact_point">Email</label>
+						<input
+							type="text"
+							id="contact_point"
+							name="contact_point"
+							placeholder="Enter your email"
+							required
+						/>
 
-					<label for="contact_point">Email</label>
-					<input
-						type="text"
-						id="contact_point"
-						name="contact_point"
-						placeholder="Enter your email"
-						required
-					/>
+						<label for="message">Message</label>
+						<textarea id="message" name="message" placeholder="Enter your message" required
+						></textarea>
 
-					<label for="message">Message</label>
-					<textarea id="message" name="message" placeholder="Enter your message" required
-					></textarea>
-
-					<button class="ripple-btn" type="submit">Submit</button>
-				</form>
+						<button class="ripple-btn" type="submit">Submit</button>
+					</form>
+				{:else}
+					<p class="glass-Box">
+						Thank you for the message! I will get back to you as soon as I can.
+					</p>
+				{/if}
 			</HTML>
 		</T.Mesh>
 	{/if}
