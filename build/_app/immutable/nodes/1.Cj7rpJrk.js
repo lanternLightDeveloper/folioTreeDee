@@ -1,1 +1,0 @@
-import{t as r,a}from"../chunks/BrNbYBIJ.js";import"../chunks/5e3UiGzI.js";import{n as e}from"../chunks/ESPAkItm.js";var n=r('<h1>Error 404 something caught on fire!</h1> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ/">Dont click this link.</a>',1);function c(t){var o=n();e(2),a(t,o)}export{c as component};
