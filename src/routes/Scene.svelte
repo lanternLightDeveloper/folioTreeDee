@@ -13,6 +13,7 @@
 	interactivity();
 	type Props = {
 		cameraRef: any;
+		autorender?: boolean;
 	};
 
 	let { cameraRef }: Props = $props();
