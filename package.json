@@ -53,6 +53,8 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
+		"@supabase/ssr": "^0.6.1",
+		"@supabase/supabase-js": "^2.52.0",
 		"@sveltejs/adapter-netlify": "^4.4.2",
 		"@threlte/core": "^8.0.1",
 		"@threlte/extras": "^9.0.1",
