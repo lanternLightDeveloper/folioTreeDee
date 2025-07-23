@@ -6,11 +6,11 @@
 	import Scene from './Scene.svelte';
 
 	type Props = {
-		autoRender?: boolean;
+		autorender?: boolean;
 		cameraRef: any;
 	};
 
-	let { autoRender = true, cameraRef }: Props = $props();
+	let { autorender = true, cameraRef }: Props = $props();
 </script>
 
 <main>
@@ -20,7 +20,7 @@
 		</Studio> -->
 
 		<!-- <ResumeScene /> -->
-		<Scene {autoRender} {cameraRef} />
+		<Scene {autorender} {cameraRef} />
 	</Canvas>
 </main>
 
