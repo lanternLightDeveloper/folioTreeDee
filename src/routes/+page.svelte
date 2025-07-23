@@ -11,6 +11,12 @@
 	};
 
 	let { autorender = true, cameraRef }: Props = $props();
+
+	let formSubmitted = $state(false);
+
+	const handleSubmit = () => {
+		formSubmitted = true;
+	};
 </script>
 
 <main>
