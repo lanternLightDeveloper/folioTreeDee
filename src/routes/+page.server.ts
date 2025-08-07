@@ -1,35 +1,18 @@
-import { fail } from '@sveltejs/kit';
-import type { Actions } from './$types';
-
 export const actions: Actions = {
-	submit: async ({ request, locals }) => {
+	submit: async ({ request, locals: { supabase } }) => {
+		const formData = await request.formData();
+		const submissionData = {
+			full_name: formData.get('full_name'),
+			contact_point: formData.get('contact_point'),
+			message: formData.get('message')
+		};
 		try {
-			const formData = await request.formData();
-			const full_name = formData.get('full_name');
-			const contact_point = formData.get('contact_point');
-			const message = formData.get('message');
-
-			if (!full_name || !contact_point || !message) {
-				return fail(400, { error: 'All fields are required.' });
-			}
-
-			const submissionData = {
-				full_name,
-				contact_point,
-				message
-			};
-
-			const { error } = await locals.supabase.from('inbox').insert(submissionData);
-
+			const { error } = await supabase.from('inbox').insert(submissionData);
 			if (error) {
-				console.error('Supabase insert error:', error.message);
-				return fail(500, { error: 'Database insert failed.' });
+				return fail(500, { error: error.message });
 			}
-
-			return { success: true };
 		} catch (error) {
-			console.error('Server error in form action:', error);
-			return fail(500, { error: 'Server error occurred.' });
+			return fail(500, { error: error.message });
 		}
 	}
 };

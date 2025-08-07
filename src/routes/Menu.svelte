@@ -379,7 +379,7 @@
 	<!-- Email  -->
 	{#if currentContact === 3}
 		<T.Mesh position={[-28.5, 7, 7.5]} scale={[1, 1, 1]} rotation={[0, -0.69, 0]}>
-			<HTML position.y={0} transform autoRender>
+			<HTML position.y={0} transform {autoRender}>
 				{#if !formSubmitted}
 					<form
 						class="classicForm"
