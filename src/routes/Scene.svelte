@@ -8,6 +8,7 @@
 	import Services from './Services/+page.svelte';
 	import Contact from './Contact/+page.svelte';
 	import About from './About/+page.svelte';
+	import Projects from './Projects/+page.svelte';
 
 	interactivity();
 	type Props = {
@@ -170,9 +171,7 @@
 
 <!-- 🦕  🦖🦖🦖 🦕 🦕 Projects💀= 💣 🌠 -->
 <HTML autoRender={false} position={htmlProjectContext}>
-	<article>
-		{#if currentButton === 5}
-			<p class="glass-Box">Projects: these are so cool</p>
-		{/if}
-	</article>
+	{#if currentButton === 5}
+		<Projects />
+	{/if}
 </HTML>
