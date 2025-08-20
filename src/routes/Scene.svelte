@@ -1,25 +1,39 @@
 <script lang="ts">
 	import { T, useTask } from '@threlte/core';
-	import { interactivity, OrbitControls, Suspense, Text } from '@threlte/extras';
+	import { interactivity, OrbitControls, Suspense, HTML, Text } from '@threlte/extras';
 
 	import World from './World/World.svelte';
 	import Menu from './Menu/+page.svelte';
-
-	let position = $state([-47, 15, 65]);
-	let lookAtTarget = $state([-25, 9, 12]);
-	let currentSet = $state('A');
-	let nextSet = $state('');
+	import Home from './Home/+page.svelte';
+	import Services from './Services/+page.svelte';
+	import Contact from './Contact/+page.svelte';
+	import About from './About/+page.svelte';
 
 	interactivity();
 	type Props = {
 		cameraRef: any;
 		autorender?: boolean;
+		currentButton?: any;
 	};
 
 	let { cameraRef }: Props = $props();
 
+	let position = $state([-47, 15, 65]);
+	let lookAtTarget = $state([-25, 9, 12]);
+	let htmlMenuPos = $state([-27, 42.5]);
+	let htmlHomeContext = $state([-80, 0]);
+	let htmlServiceContext = $state([-40, 0]);
+	let htmlProjectContext = $state([-40, 0]);
+	let htmlAboutContext = $state([-40, 0]);
+	let cameraLocked = $state(false);
+	let currentSet = $state('A');
+	let nextSet = $state('');
 	let showMenu = $state(false);
 	let elapsed = 0;
+	let html = $state();
+
+	let currentButton = $state(1);
+	let currentContact = $state(0);
 
 	useTask((delta) => {
 		if (!showMenu) {
@@ -29,6 +43,34 @@
 			}
 		}
 	});
+
+	function updatePosition() {
+		if (cameraLocked) {
+			return;
+		}
+
+		const screenWidth = window.innerWidth;
+		const screenHeight = window.innerHeight;
+
+		if (screenWidth < 768) {
+			position = [-43, 13, 65];
+			lookAtTarget = [-20, 9, 12];
+			htmlMenuPos = [-28.5, 43.5];
+			htmlHomeContext = [-30, -5];
+			htmlServiceContext = [-42, 40];
+			htmlProjectContext = [-45, 0];
+			htmlAboutContext = [-55, 0];
+		} else if (screenWidth > 728) {
+			position = [-45, 15, 60];
+			htmlMenuPos = [0, 42];
+			htmlHomeContext = [-55, 0];
+			htmlServiceContext = [-10, 30];
+			htmlProjectContext = [-30, -10];
+			htmlAboutContext = [-60, -3];
+		}
+	}
+
+	window.addEventListener('resize', updatePosition);
 </script>
 
 // 🦕 🦖🦖🦖 🦕 🦕 Base camera + Lights💀= 💣 🌠
@@ -45,10 +87,6 @@
 <T.AmbientLight intensity={0.5} />
 
 // 🦕 🦖🦖🦖 🦕 🦕Loading💀= 💣 🌠
-
-{#if showMenu}
-	<Menu {cameraRef} />
-{/if}
 
 <Suspense
 	final
@@ -98,3 +136,43 @@
 		{/if}
 	{/if}
 </Suspense>
+
+<HTML autoRender={false} position={htmlMenuPos}>
+	{#if showMenu}
+		<Menu {cameraRef} bind:currentButton />
+	{/if}
+</HTML>
+
+// 🦕 🦖🦖🦖 🦕 🦕 Home Text 💀= 💣 🌠
+<HTML autoRender={false} position={htmlHomeContext}>
+	{#if currentButton === 1}
+		<Home />
+	{/if}
+</HTML>
+
+// 🦕 🦖🦖🦖 🦕 🦕Services 💀= 💣 🌠
+<HTML autoRender={false} position={htmlServiceContext}>
+	{#if currentButton === 2}
+		<Services {cameraRef} />
+	{/if}
+</HTML>
+
+// 🦕 🦖🦖🦖 🦕 🦕 Contact / Social Icons 💀= 💣 🌠
+<!-- {#if currentButton === 3}{/if} -->
+<Contact />
+
+// 🦕 🦖🦖🦖 🦕 🦕 About💀= 💣 🌠
+<HTML autoRender={false} position={htmlAboutContext}>
+	{#if currentButton === 4}
+		<About />
+	{/if}
+</HTML>
+
+<!-- 🦕  🦖🦖🦖 🦕 🦕 Projects💀= 💣 🌠 -->
+<HTML autoRender={false} position={htmlProjectContext}>
+	<article>
+		{#if currentButton === 5}
+			<p class="glass-Box">Projects: these are so cool</p>
+		{/if}
+	</article>
+</HTML>

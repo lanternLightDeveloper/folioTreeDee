@@ -1,5 +1,4 @@
 <script lang="ts">
-	// import '../app.css';
 	import '$lib/styles/baseCamp.svelte';
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';

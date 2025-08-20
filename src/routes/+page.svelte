@@ -2,9 +2,7 @@
 	import '$lib/styles/baseCamp.svelte';
 	import { Canvas } from '@threlte/core';
 	import { Studio } from '@threlte/studio';
-	import ResumeScene from './ResumeScene.svelte';
 	import Scene from './Scene.svelte';
-	import { enhance } from '$app/forms';
 
 	type Props = {
 		autorender?: boolean;
@@ -12,12 +10,6 @@
 	};
 
 	let { autorender = true, cameraRef }: Props = $props();
-
-	let formSubmitted = $state(false);
-
-	const handleSubmit = () => {
-		formSubmitted = true;
-	};
 </script>
 
 <main>
