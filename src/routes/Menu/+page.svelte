@@ -5,12 +5,14 @@
 	type Props = {
 		cameraRef?: any;
 		currentButton: number;
+		currentContact: number;
 	};
 
-	let { cameraRef, currentButton = $bindable(0) } = $props();
+	let { cameraRef, currentButton = $bindable(0), currentContact = $bindable(0) } = $props();
 
 	let currentSet = $state('A');
 	let nextSet = $state(null);
+	// let currentContact = $state(0);
 	let showProjectDropdown = $state(false);
 	let showContactDropdown = $state(false);
 	let position = $state([-47, 15, 65]);
@@ -91,7 +93,7 @@
 		onclick={() => {
 			handleClick([-45, 15, 60], [-20, 9, 12], () => loadNextSet('A'));
 			currentButton = 1;
-			showContactDropdown = false;
+			currentContact = 0;
 			showProjectDropdown = false;
 		}}
 	>
@@ -102,37 +104,17 @@
 		onclick={() => {
 			handleClick([-40.5, 15, 21], [-30.5, 11, 10], () => loadNextSet('A'));
 			currentButton = 3;
-			showContactDropdown = true;
 			showProjectDropdown = false;
 		}}
 	>
 		Contact
 	</button>
 
-	<!-- Contact Dropdown Menu -->
-	<div class="dropdown" class:show={showContactDropdown}>
-		<button> Email </button>
-		<a href="https://www.instagram.com/lanternlightdevelopment/">
-			<button> Instagram </button>
-		</a>
-		<a href="https://bsky.app/profile/soturbulent.bsky.social">
-			<button> Bluesky </button>
-		</a>
-		<br />
-		<button
-			onclick={() => {
-				showContactDropdown = false;
-			}}
-		>
-			Close
-		</button>
-	</div>
-
 	<button
 		onclick={() => {
 			handleClick([-23.5, 18, 23], [-22, 12, 0], () => loadNextSet('A'));
 			currentButton = 2;
-			showContactDropdown = false;
+			currentContact = 0;
 			showProjectDropdown = false;
 		}}
 	>
@@ -143,7 +125,6 @@
 		onclick={() => {
 			handleClick([-4.5, 8.5, 12], [0, 8, 20], () => loadNextSet('A'));
 			currentButton = 4;
-			showContactDropdown = false;
 			showProjectDropdown = false;
 		}}
 	>
@@ -153,10 +134,9 @@
 	<button
 		onclick={() => {
 			handleClick([-2, 10, 14], [-15, 8, 8], () => loadNextSet('A'));
-
 			currentButton = 5;
+			currentContact = 0;
 			showProjectDropdown = true;
-			showContactDropdown = false;
 		}}
 	>
 		Projects

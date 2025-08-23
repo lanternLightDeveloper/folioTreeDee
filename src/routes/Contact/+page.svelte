@@ -16,27 +16,22 @@
 	import IgIcon from '../Icons/IgIcon.svelte';
 	import BskyIcon from '../Icons/BskyIcon.svelte';
 
-	let currentContact = $state(0);
+	// let currentContact = $state(0);
+	let formPosition = $state([-26, 8.5]);
+	let formSubmitted = $state(false);
+
+	type Props = {
+		currentContact: number;
+	};
+
+	let { currentContact = $bindable(0) } = $props();
 
 	interactivity();
 
-	// Function to navigate to a specified URL without scrolling
-	function navigateTo(url: string) {
-		// Validate URL to prevent open redirects
-		if (url.startsWith('/') || url.startsWith('http')) {
-			goto(url, { noScroll: true });
-		} else {
-			console.error('Invalid URL:', url);
-		}
-	}
-
-	let formSubmitted = $state(false);
-
+	const cursor = useCursor('pointer');
 	const handleSubmit = () => {
 		formSubmitted = true;
 	};
-
-	const cursor = useCursor('pointer');
 
 	//  🦕  🦖🦖🦖 🦕 🦕  Extras/ Debug 💀= 💣 🌠
 </script>
@@ -94,11 +89,29 @@
 
 <!-- Instagram  -->
 {#if currentContact === 1}
-	<T.Mesh position={[-33, 11, 11]} scale={[0.005, 0.005, 0.005]} rotation={[-0.2, -0.65, -0.11]}>
+	<T.Mesh
+		position={[-33.5, 11.25, 10.5]}
+		scale={[0.005, 0.005, 0.005]}
+		rotation={[-0.2, -0.65, -0.11]}
+	>
+		<Text3DGeometry text={'Visit us on'} />
+		<T.MeshStandardMaterial color="black" />
+	</T.Mesh>
+
+	<T.Mesh position={[-33, 10.5, 11]} scale={[0.005, 0.005, 0.005]} rotation={[-0.2, -0.65, -0.11]}>
 		<Text3DGeometry text={'Instagram'} />
 		<T.MeshStandardMaterial color="white" />
 	</T.Mesh>
-	<T.Mesh position={[-32, 9, 11.8]} scale={[4.8, 2.75]} rotation={[0, -0.723, 0]}>
+	<T.Mesh
+		position={[-32, 9, 11.8]}
+		scale={[4.8, 2.75]}
+		rotation={[0, -0.723, 0]}
+		onclick={() => {
+			window.open('https://instagram.com/lanternlightdevelopment/', '_blank');
+		}}
+		onpointerenter={cursor.onPointerEnter}
+		onpointerleave={cursor.onPointerLeave}
+	>
 		<T.PlaneGeometry />
 		<ImageMaterial transparent side={DoubleSide} url="uckzAlt.png" />
 	</T.Mesh>
@@ -106,11 +119,39 @@
 
 <!-- BluSky  -->
 {#if currentContact === 2}
-	<T.Mesh position={[-33, 11, 11]} scale={[0.005, 0.005, 0.005]} rotation={[-0.2, -0.65, -0.11]}>
+	<T.Mesh
+		position={[-33.5, 11.25, 10.5]}
+		scale={[0.005, 0.005, 0.005]}
+		rotation={[-0.2, -0.65, -0.11]}
+	>
+		<Text3DGeometry text={'Visit us on'} />
+		<T.MeshStandardMaterial color="black" />
+	</T.Mesh>
+
+	<T.Mesh
+		position={[-33, 10.5, 11]}
+		scale={[0.005, 0.005, 0.005]}
+		rotation={[-0.2, -0.65, -0.11]}
+		onclick={() => {
+			window.open('https://bsky.app/profile/soturbulent.bsky.social/', '_blank');
+		}}
+		onpointerenter={cursor.onPointerEnter}
+		onpointerleave={cursor.onPointerLeave}
+	>
 		<Text3DGeometry text={'BlueSky'} />
 		<T.MeshStandardMaterial color="blue" />
 	</T.Mesh>
-	<T.Mesh position={[-32, 9, 11.8]} scale={[4.8, 2.75]} rotation={[0, -0.723, 0]}>
+
+	<T.Mesh
+		position={[-32, 9, 11.8]}
+		scale={[4.8, 2.75]}
+		rotation={[0, -0.723, 0]}
+		onclick={() => {
+			window.open('https://bsky.app/profile/soturbulent.bsky.social/', '_blank');
+		}}
+		onpointerenter={cursor.onPointerEnter}
+		onpointerleave={cursor.onPointerLeave}
+	>
 		<T.PlaneGeometry />
 		<ImageMaterial transparent side={DoubleSide} url="butterfittiAlt.png" />
 	</T.Mesh>
