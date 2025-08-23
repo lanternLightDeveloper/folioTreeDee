@@ -14,7 +14,6 @@
 	type Props = {
 		cameraRef: any;
 		autorender?: boolean;
-		currentButton?: any;
 	};
 
 	let { cameraRef }: Props = $props();
@@ -51,7 +50,6 @@
 		}
 
 		const screenWidth = window.innerWidth;
-		const screenHeight = window.innerHeight;
 
 		if (screenWidth < 768) {
 			position = [-43, 13, 65];
@@ -72,6 +70,8 @@
 	}
 
 	window.addEventListener('resize', updatePosition);
+
+	//  🦕  🦖🦖🦖 🦕 🦕  Extras/ Debug 💀= 💣 🌠
 </script>
 
 // 🦕 🦖🦖🦖 🦕 🦕 Base camera + Lights💀= 💣 🌠
@@ -133,14 +133,14 @@
 
 	{#if currentSet === 'A' || nextSet === 'A'}
 		{#if currentSet === 'A'}
-			<World {cameraRef} />
+			<World />
 		{/if}
 	{/if}
 </Suspense>
 
 <HTML autoRender={false} position={htmlMenuPos}>
 	{#if showMenu}
-		<Menu {cameraRef} bind:currentButton />
+		<Menu {cameraRef} bind:currentButton bind:currentContact />
 	{/if}
 </HTML>
 
@@ -160,7 +160,7 @@
 
 // 🦕 🦖🦖🦖 🦕 🦕 Contact / Social Icons 💀= 💣 🌠
 <!-- {#if currentButton === 3}{/if} -->
-<Contact />
+<Contact bind:currentContact />
 
 // 🦕 🦖🦖🦖 🦕 🦕 About💀= 💣 🌠
 <HTML autoRender={false} position={htmlAboutContext}>
