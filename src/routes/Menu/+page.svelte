@@ -123,16 +123,6 @@
 
 	<button
 		onclick={() => {
-			handleClick([-4.5, 8.5, 12], [0, 8, 20], () => loadNextSet('A'));
-			currentButton = 4;
-			showProjectDropdown = false;
-		}}
-	>
-		About
-	</button>
-
-	<button
-		onclick={() => {
 			handleClick([-2, 10, 14], [-15, 8, 8], () => loadNextSet('A'));
 			currentButton = 5;
 			currentContact = 0;
@@ -140,6 +130,16 @@
 		}}
 	>
 		Projects
+	</button>
+
+	<button
+		onclick={() => {
+			handleClick([-4.5, 8.5, 12], [0, 8, 20], () => loadNextSet('A'));
+			currentButton = 4;
+			showProjectDropdown = false;
+		}}
+	>
+		About
 	</button>
 
 	<!-- Projects Dropdown Menu -->
@@ -218,16 +218,6 @@
 
 	.dropdown.show {
 		display: block;
-	}
-
-	article {
-		width: 30vw;
-
-		& h2,
-		p {
-			margin: 0;
-			padding: var(--size-2);
-		}
 	}
 
 	aside {

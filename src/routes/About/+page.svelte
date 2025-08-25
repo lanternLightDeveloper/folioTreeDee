@@ -30,7 +30,6 @@
 		height: 20vh;
 		max-height: 20vh;
 		padding: 0 var(--size-4);
-		margin: 0.5rem -45vw;
 		width: 80vw;
 		overflow-y: auto;
 	}

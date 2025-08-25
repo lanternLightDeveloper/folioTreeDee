@@ -256,7 +256,6 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: var(--size-5);
-		margin-top: -55vh;
 		width: 75vw;
 		height: 100vh;
 		border-radius: var(--rad-Sm);
@@ -266,7 +265,6 @@
 
 	article {
 		width: 30vw;
-		margin-top: -30vh;
 
 		& h2,
 		p {
@@ -279,7 +277,6 @@
 		height: fit-content;
 		max-height: 80vh;
 		padding: var(--size-4);
-		margin-top: -5vh;
 		width: 30vw;
 		overflow-y: auto;
 

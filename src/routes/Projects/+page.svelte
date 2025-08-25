@@ -7,7 +7,6 @@
 <style>
 	article {
 		width: 30vw;
-		margin: -5vh -1vw;
 
 		& h2,
 		p {

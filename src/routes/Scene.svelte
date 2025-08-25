@@ -55,22 +55,23 @@
 			position = [-43, 13, 65];
 			lookAtTarget = [-20, 9, 12];
 			htmlMenuPos = [-28.5, 43.5];
-			htmlHomeContext = [-30, -5];
+			htmlHomeContext = [-50, -5];
 			htmlServiceContext = [-42, 40];
-			htmlProjectContext = [-45, 0];
+			htmlProjectContext = [-40, -5];
 			htmlAboutContext = [-55, 0];
 		} else if (screenWidth > 728) {
 			position = [-45, 15, 60];
-			htmlMenuPos = [0, 42];
-			htmlHomeContext = [-55, 0];
-			htmlServiceContext = [-10, 30];
-			htmlProjectContext = [-30, -10];
-			htmlAboutContext = [-60, -3];
+			htmlMenuPos = [-30, 42];
+			htmlHomeContext = [-80, 0];
+			htmlServiceContext = [-40, 30];
+			htmlProjectContext = [-30, 0];
+			htmlAboutContext = [-88, 0];
 		}
 	}
 
 	window.addEventListener('resize', updatePosition);
 
+	updatePosition();
 	//  🦕  🦖🦖🦖 🦕 🦕  Extras/ Debug 💀= 💣 🌠
 </script>
 

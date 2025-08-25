@@ -16,7 +16,6 @@
 	import IgIcon from '../Icons/IgIcon.svelte';
 	import BskyIcon from '../Icons/BskyIcon.svelte';
 
-	// let currentContact = $state(0);
 	let formPosition = $state([-26, 8.5]);
 	let formSubmitted = $state(false);
 
