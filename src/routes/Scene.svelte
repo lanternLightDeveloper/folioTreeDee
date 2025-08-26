@@ -54,7 +54,7 @@
 		if (screenWidth < 768) {
 			position = [-47, 15, 70];
 			lookAtTarget = [-20, 9, 12];
-			htmlMenuPos = [-32.5, 43.5];
+			htmlMenuPos = [-32, 43.5];
 			htmlHomeContext = [-55, -5];
 			htmlServiceContext = [-45, 35];
 			htmlProjectContext = [-50, -5];
@@ -176,3 +176,4 @@
 		<Projects />
 	{/if}
 </HTML>
+
