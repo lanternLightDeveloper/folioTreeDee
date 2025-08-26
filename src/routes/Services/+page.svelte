@@ -69,8 +69,8 @@
 </script>
 
 {#if serviceButton === 1}
-	<section>
-		<div class="price-box glass-Box">
+	<article class=" glass-Box">
+		
 			<h2>Pricing Tiers</h2>
 			<p>
 				Every project is unique, and pricing varies based on scope and complexity. My goal is to
@@ -107,8 +107,8 @@
 				collaborate to turn your concepts into a polished, professional site. This can be complex
 				and include E-commerce or CMS services.
 			</p>
-		</div>
-	</section>
+
+	</article>
 {/if}
 
 {#if serviceButton === 2}
@@ -252,32 +252,12 @@
 <!-- 🦕  🦖🦖🦖 🦕 🦕 Styles 💀= 💣 🌠 -->
 <!--svelte-ignore css_unused_selector -->
 <style>
-	section {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--size-5);
-		width: 75vw;
-		height: 100vh;
-		border-radius: var(--rad-Sm);
-		padding: var(--size-5);
-		z-index: 999;
-	}
 
 	article {
-		width: 30vw;
-
-		& h2,
-		p {
-			margin: 0;
-			padding: var(--size-2);
-		}
-	}
-
-	.price-box {
-		height: fit-content;
+height: fit-content;
 		max-height: 80vh;
 		padding: var(--size-4);
-		width: 30vw;
+		width: 40vw;
 		overflow-y: auto;
 
 		& p,
@@ -287,4 +267,5 @@
 			padding: 0;
 		}
 	}
+
 </style>

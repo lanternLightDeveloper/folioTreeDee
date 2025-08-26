@@ -91,7 +91,7 @@
 <aside class="menu fade-in">
 	<button
 		onclick={() => {
-			handleClick([-45, 15, 60], [-20, 9, 12], () => loadNextSet('A'));
+			handleClick([-47, 15, 70], [-20, 9, 12], () => loadNextSet('A'));
 			currentButton = 1;
 			currentContact = 0;
 			showProjectDropdown = false;
@@ -112,7 +112,7 @@
 
 	<button
 		onclick={() => {
-			handleClick([-23.5, 18, 23], [-22, 12, 0], () => loadNextSet('A'));
+			handleClick([-23.5, 18, 25], [-22, 12, 0], () => loadNextSet('A'));
 			currentButton = 2;
 			currentContact = 0;
 			showProjectDropdown = false;
@@ -144,7 +144,7 @@
 
 	<!-- Projects Dropdown Menu -->
 	<div class="dropdown" class:show={showProjectDropdown}>
-		<button onclick={() => handleClick([-4, 10, 13], [-15, 8, 8], () => loadNextSet('A'))}>
+		<button onclick={() => handleClick([-2, 10, 14], [-15, 8, 8], () => loadNextSet('A'))}>
 			Artisan Countertops
 		</button>
 		<button onclick={() => handleClick([-19, 9.5, 11], [-13.5, 9.5, 0], () => loadNextSet('A'))}>
