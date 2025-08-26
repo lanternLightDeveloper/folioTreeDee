@@ -213,7 +213,7 @@
 		border-radius: var(--rad-Sm);
 		padding: var(--space-Sm);
 		display: none;
-		margin-top: var(--size-8);
+		margin-top: var(--size-9);
 	}
 
 	.dropdown.show {
@@ -228,3 +228,4 @@
 		justify-content: center;
 	}
 </style>
+
