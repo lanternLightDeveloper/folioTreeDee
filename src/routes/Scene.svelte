@@ -59,10 +59,10 @@
 			htmlServiceContext = [-45, 35];
 			htmlProjectContext = [-50, -5];
 			htmlAboutContext = [-60, 0];
-		} else if (screenWidth > 728) {
-			position = [-45, 15, 60];
-			htmlMenuPos = [-30, 42];
-			htmlHomeContext = [-80, 0];
+		} else if (screenWidth > 768) {
+			position = [-45, 13, 60];
+			htmlMenuPos = [-30, 40];
+			htmlHomeContext = [-80, -5];
 			htmlServiceContext = [-40, 30];
 			htmlProjectContext = [-30, 0];
 			htmlAboutContext = [-88, 0];
@@ -176,4 +176,3 @@
 		<Projects />
 	{/if}
 </HTML>
-

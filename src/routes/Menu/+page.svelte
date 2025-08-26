@@ -183,7 +183,7 @@
 
 	.menu {
 		display: flex;
-		width: 110vw;
+		width: 100vw;
 		background: transparent;
 
 		& button {
@@ -228,4 +228,3 @@
 		justify-content: center;
 	}
 </style>
-

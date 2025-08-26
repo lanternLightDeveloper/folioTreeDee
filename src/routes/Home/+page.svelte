@@ -27,9 +27,12 @@
 			padding: var(--size-2);
 		}
 
-		@media screen and (min-width: 768px) {
+		@media (max-width: 768px) {
 			article {
 				width: 30vw;
+				& p {
+					font-size: var(--size-2);
+				}
 			}
 		}
 	}
