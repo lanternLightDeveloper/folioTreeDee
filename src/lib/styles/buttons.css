@@ -44,7 +44,8 @@
     background: linear-gradient(to right, #ffd700, #f0efea);
     border: none;
     color: var(--bg-1);
-    padding: 15px 32px;
+    padding: var(--size-4);
+	font-size: var(--size-4);
     text-align: center;
     text-decoration: none;
     display: inline-block;
