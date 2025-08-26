@@ -52,7 +52,7 @@
 		const screenWidth = window.innerWidth;
 
 		if (screenWidth < 768) {
-			position = [-43, 13, 65];
+			position = [-47, 15, 70];
 			lookAtTarget = [-20, 9, 12];
 			htmlMenuPos = [-28.5, 43.5];
 			htmlHomeContext = [-50, -5];
